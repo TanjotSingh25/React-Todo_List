@@ -1,9 +1,13 @@
+import Title from './components/Title';
+import Buttons from './components/Buttons';
+import Tasks from './components/Tasks';
+
 function App() {
   return (
     <div className="App">
-      <h1>
-        Todo List
-      </h1>
+      <Title />
+      <Buttons />
+      <Tasks />
     </div>
   );
 }
