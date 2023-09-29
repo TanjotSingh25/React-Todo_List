@@ -1,13 +1,20 @@
 import { useState } from "react";
 
-export default function Buttons({ Category, setCategory }) {
+export default function Buttons({ Status, setStatus, setAddTaskFlag }) {
+  function ToggleAddTaskFlag() {
+    console.log("yes");
+    setAddTaskFlag((prevValue) => !prevValue);
+  }
+
   return (
     <div className="ButtonsDiv">
-      <button className="AddTaskButton">Add Task</button>
+      <button className="AddTaskButton" onClick={ToggleAddTaskFlag}>
+        Add Task
+      </button>
       <select
-        value={Category}
+        value={Status}
         className="CategoryDropdown"
-        onChange={(event) => setCategory(event.target.value)}
+        onChange={(event) => setStatus(event.target.value)}
       >
         <option value="All">All</option>
         <option value="Incomplete">Incomplete</option>

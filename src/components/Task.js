@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Task({ TaskName, Category, Key, setTasks }) {
+export default function Task({ TaskName, Status, Key, setTasks }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -23,8 +23,7 @@ export default function Task({ TaskName, Category, Key, setTasks }) {
         if (TaskObj.task === Task.TaskName) {
           return {
             ...TaskObj,
-            category:
-              TaskObj.category === "Complete" ? "Incomplete" : "Complete",
+            status: TaskObj.status === "Complete" ? "Incomplete" : "Complete",
           };
         }
         return TaskObj;
@@ -37,14 +36,15 @@ export default function Task({ TaskName, Category, Key, setTasks }) {
     <div className={`TaskBox ${isVisible ? "appear" : ""}`}>
       <div className="checkbox">
         <input
+          readOnly
           type="checkbox"
           id={`check${Key + 1}`}
           className="checkbox-flip"
-          checked={Category === "Complete"}
+          checked={Status === "Complete"}
         />
         <label className="CheckboxLabel" htmlFor={`check${Key + 1}`}>
           <span onClick={() => handleCheck({ TaskName })}></span>
-          <p class={Category === "Complete" ? "CompleteText" : ""}>
+          <p className={Status === "Complete" ? "CompleteText" : ""}>
             {TaskName}
           </p>
         </label>

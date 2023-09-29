@@ -1,29 +1,28 @@
 import { useState } from "react";
 import Task from "./Task";
 
-export default function Tasks({ Category }) {
+export default function Tasks({ Status }) {
   const [Tasks, setTasks] = useState([
     {
       task: "HTML",
-      category: "Complete",
+      status: "Complete",
     },
     {
       task: "React",
-      category: "Incomplete",
+      status: "Incomplete",
     },
   ]);
 
-  console.log(Tasks);
-
   const filteredTasks = Tasks.filter(
-    (taskClass) => Category === "All" || taskClass.category === Category
+    (taskClass) => Status === "All" || taskClass.status === Status
   );
 
   const TasksComponent = filteredTasks.map((taskClass, index) => (
     <Task
+      key={index}
       Key={index}
       TaskName={taskClass.task}
-      Category={taskClass.category}
+      Status={taskClass.status}
       setTasks={setTasks}
     />
   ));
