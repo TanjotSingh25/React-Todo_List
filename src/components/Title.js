@@ -1,6 +1,3 @@
-
 export default function Title() {
-    return (
-        <h1 className="TodoListTitle">Todo List</h1>
-    );
+  return <h1 className="TodoListTitle">Todo List</h1>;
 }

@@ -1,23 +1,40 @@
-import { useState } from 'react';
-import Task from './Task';
+import { useState } from "react";
+import Task from "./Task";
 
-export default function Tasks() {
-    const [Tasks, setTasks] = useState([
-                                        {
-                                            task:'Work',
-                                            category:'Incomplete'
-                                        }
-    ]);
+export default function Tasks({ Category }) {
+  const [Tasks, setTasks] = useState([
+    {
+      task: "HTML",
+      category: "Complete",
+    },
+    {
+      task: "React",
+      category: "Incomplete",
+    },
+  ]);
 
-    const TasksComponent = Tasks.map((taskClass, index) => {
-        return (<Task key={index} TaskName={taskClass.task} Category={taskClass.category} />)
-    })
+  console.log(Tasks);
 
-    console.log(TasksComponent)
+  const filteredTasks = Tasks.filter(
+    (taskClass) => Category === "All" || taskClass.category === Category
+  );
 
-    return (
-        <div className="TasksBodyDiv">
-            {Tasks.length === 0 ? <p className='NoTodos'>No Todos</p> : TasksComponent}
-        </div>
-    )
+  const TasksComponent = filteredTasks.map((taskClass, index) => (
+    <Task
+      Key={index}
+      TaskName={taskClass.task}
+      Category={taskClass.category}
+      setTasks={setTasks}
+    />
+  ));
+
+  return (
+    <div className="TasksBodyDiv">
+      {TasksComponent.length === 0 ? (
+        <p className="NoTodos">No Todos</p>
+      ) : (
+        TasksComponent
+      )}
+    </div>
+  );
 }

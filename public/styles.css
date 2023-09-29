@@ -1,79 +1,198 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 
 body {
-    background-color: #f8f8ff;
+  background-color: #f8f8ff;
 }
 
 .TodoListTitle {
-    color: #646681;
-    display: inline-block;
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin: 1rem auto 1.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
+  color: #646681;
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 1rem auto 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
 }
 
 .AddTaskButton {
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    height: auto;
-    overflow: hidden;
-    padding: 0.5rem 1.2rem;
-    text-decoration: none;
-    text-transform: capitalize;
-    background-color: #646ff0;
-    font-family: Poppins, sans-serif;
-    color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  height: auto;
+  overflow: hidden;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  text-transform: capitalize;
+  background-color: #646ff0;
+  font-family: Poppins, sans-serif;
+  color: white;
 }
 
 .CategoryDropdown {
-    background-color: #cccdde;
-    border: none;
-    color: #585858;
-    cursor: pointer;
-    font-family: Poppins, sans-serif;
-    padding: 0.5rem 1rem;
-    width: 150px;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    height: auto;
-    text-decoration: none;
-    text-transform: capitalize;
+  background-color: #cccdde;
+  border: none;
+  color: #585858;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+  padding: 0.5rem 1rem;
+  width: 150px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  height: auto;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 
-.CategoryDropdown option{
-    padding-left: 0;
+.CategoryDropdown option {
+  padding-left: 0;
 }
 
 .ButtonsDiv {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 30% 0 30%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30% 0 30%;
 }
 
 .TasksBodyDiv {
-    background-color: #ecedf6;
-    margin: 0.5rem 30% 2rem 30%;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem;
-    color: #585858;
-    font-weight: 500;
-    font-family: Poppins, sans-serif;
+  background-color: #ecedf6;
+  margin: 0.5rem 30% 2rem 30%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: #585858;
+  font-weight: 500;
+  font-family: Poppins, sans-serif;
 }
 
 .NoTodos {
-    background-color: #dedfe1;
-    padding: 0.4rem 0.7rem;
-    border-radius: 8px;
+  background-color: #dedfe1;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+}
+
+.TaskBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 6px;
+  margin: 0.5rem;
+  padding: 0.8rem 0;
+  opacity: 0; /* Start with zero opacity */
+  transform: translateY(20px); /* Move element down by 20px */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.TaskBox.appear {
+  opacity: 1; /* Make the element fully visible */
+  transform: translateY(0); /* Reset the transform */
+}
+
+.EditButtons {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.EditBtnDiv {
+  display: flex;
+  align-items: center;
+  background-color: #eeeeee;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 0 0 0.6rem;
+  cursor: pointer;
+}
+
+.EditBtnDiv:hover {
+  background-color: #dddcdc;
+}
+
+.checkbox {
+  width: 100%;
+  font-size: large;
+}
+
+.CheckboxLabel {
+  margin-left: 1rem;
+}
+
+p {
+  display: inline;
+}
+
+.CompleteText {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: grey;
+}
+
+/* -------------------------------------------------Complex-Shit-------------------------------------------------*/
+
+@keyframes pull {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 1.2rem;
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+.checkbox-flip {
+  display: none;
+}
+
+.checkbox-flip + label span {
+  display: inline-block;
+  width: 25px;
+  height: 19px;
+  margin: 0 5px -1px 0;
+  /*layout relationship between check and label*/
+}
+
+.checkbox-flip + label span:before,
+.checkbox-flip + label span:after {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: transparent;
+  border: 2px solid #646ff0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.checkbox-flip + label span:after {
+  z-index: 0;
+  border: none;
+}
+
+.checkbox-flip:checked + label span:before {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  background: #646ff0;
 }
