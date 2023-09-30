@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function Buttons({ Status, setStatus, setAddTaskFlag }) {
   function ToggleAddTaskFlag() {
-    console.log("yes");
     setAddTaskFlag((prevValue) => !prevValue);
   }
 

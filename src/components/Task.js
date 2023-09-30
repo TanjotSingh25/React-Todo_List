@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 
-export default function Task({ TaskName, Status, Key, setTasks }) {
+export default function Task({
+  TaskName,
+  Status,
+  Key,
+  setTasks,
+  setAddTaskFlag,
+  setStatusValue,
+  setTitleValue,
+}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -15,6 +23,13 @@ export default function Task({ TaskName, Status, Key, setTasks }) {
     setTasks((CurrentTasks) => {
       return CurrentTasks.filter((TaskObj) => TaskObj.task !== Task.TaskName);
     });
+  }
+
+  function handleEdit(Task, ItemStatus) {
+    console.log(ItemStatus, Task);
+    setStatusValue(ItemStatus.Status);
+    setTitleValue(Task.TaskName);
+    setAddTaskFlag((prev) => !prev);
   }
 
   function handleCheck(Task) {
@@ -53,7 +68,10 @@ export default function Task({ TaskName, Status, Key, setTasks }) {
         <div className="EditBtnDiv" onClick={() => handleDelete({ TaskName })}>
           <img src="images/trashcan.png" width={20} />
         </div>
-        <div className="EditBtnDiv">
+        <div
+          className="EditBtnDiv"
+          onClick={() => handleEdit({ TaskName }, { Status })}
+        >
           <img src="images/pencil.png" width={20} />
         </div>
       </div>

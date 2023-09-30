@@ -7,6 +7,10 @@ import { useState } from "react";
 function App() {
   const [Status, setStatus] = useState("All");
   const [AddTaskFlag, setAddTaskFlag] = useState(false);
+  const [AllTasks, setAllTasks] = useState([]);
+
+  const [TitleValue, setTitleValue] = useState("");
+  const [StatusValue, setStatusValue] = useState("Incomplete");
 
   return (
     <div className="App">
@@ -16,8 +20,23 @@ function App() {
         setStatus={setStatus}
         setAddTaskFlag={setAddTaskFlag}
       />
-      <Tasks Status={Status} />
-      <AddTask AddTaskFlag={AddTaskFlag} setAddTaskFlag={setAddTaskFlag} />
+      <Tasks
+        Status={Status}
+        Tasks={AllTasks}
+        setTasks={setAllTasks}
+        setAddTaskFlag={setAddTaskFlag}
+        setTitleValue={setTitleValue}
+        setStatusValue={setStatusValue}
+      />
+      <AddTask
+        AddTaskFlag={AddTaskFlag}
+        setAddTaskFlag={setAddTaskFlag}
+        setTasks={setAllTasks}
+        Title={TitleValue}
+        setTitle={setTitleValue}
+        Status={StatusValue}
+        setStatus={setStatusValue}
+      />
     </div>
   );
 }

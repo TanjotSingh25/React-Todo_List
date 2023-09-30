@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 
 body {
   background-color: #f8f8ff;
@@ -165,23 +166,14 @@ p {
   opacity: 0;
   visibility: hidden;
   transform: scale(0.8);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.AddTaskDiv.disappear {
-  opacity: 0;
-  transform: scale(0.8);
-  transition-delay: 0.5s;
-  visibility: hidden;
-  z-index: -999999;
+  transition: transform 0.5s ease, visibility 0.5 ease, opacity 0.5s ease;
 }
 
 .AddTaskDiv.appear {
   opacity: 1;
   transform: scale(1);
   visibility: visible;
-  z-index: 999999;
-  transition-delay: 0s;
+  transition: transform 0.5s ease, visibility 0.5 ease, opacity 0.5s ease;
 }
 
 .XText {
@@ -239,6 +231,8 @@ p {
   width: 93%;
   border: none;
   margin-bottom: 1rem;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
 }
 
 .AddTaskBtns {
@@ -268,6 +262,12 @@ p {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
+}
+
+#Status {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  width: 97%;
 }
 
 /* -------------------------------------------------Complex-Shit-------------------------------------------------*/

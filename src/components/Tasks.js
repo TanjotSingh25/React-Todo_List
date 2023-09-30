@@ -1,18 +1,14 @@
 import { useState } from "react";
 import Task from "./Task";
 
-export default function Tasks({ Status }) {
-  const [Tasks, setTasks] = useState([
-    {
-      task: "HTML",
-      status: "Complete",
-    },
-    {
-      task: "React",
-      status: "Incomplete",
-    },
-  ]);
-
+export default function Tasks({
+  Status,
+  Tasks,
+  setTasks,
+  setAddTaskFlag,
+  setStatusValue,
+  setTitleValue,
+}) {
   const filteredTasks = Tasks.filter(
     (taskClass) => Status === "All" || taskClass.status === Status
   );
@@ -24,6 +20,9 @@ export default function Tasks({ Status }) {
       TaskName={taskClass.task}
       Status={taskClass.status}
       setTasks={setTasks}
+      setAddTaskFlag={setAddTaskFlag}
+      setTitleValue={setTitleValue}
+      setStatusValue={setStatusValue}
     />
   ));
 
