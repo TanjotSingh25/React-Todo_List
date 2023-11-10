@@ -10,9 +10,13 @@ You can access the live demo of this app here: [Todo App Demo](https://tanjot-to
 
 ## Features
 
-- Add tasks to your todo list.
-- Remove tasks from your todo list.
-- Edit existing tasks.
-- Mark tasks as complete.
-- Filter tasks to view all, incomplete, or complete tasks.
-- Smooth transitions using React.
+-   Add tasks to your todo list.
+-   Remove tasks from your todo list.
+-   Edit existing tasks.
+-   Mark tasks as complete.
+-   Filter tasks to view all, incomplete, or complete tasks.
+-   Smooth transitions using React.
+
+Node JS Backend: npm run dev
+MongoDB: mongod --dbpath ./mongo-todolist-db
+React Frontend: npm start
