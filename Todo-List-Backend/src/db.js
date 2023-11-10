@@ -1,13 +1,16 @@
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 
 let db;
+dotenv.config();
 
 async function connectToDB(cb) {
-    const client = new MongoClient("mongodb://127.0.0.1:27017");
-    await client.connect();
+  console.log(process.env.MONGODB_LINK);
+  const client = new MongoClient(process.env.MONGODB_LINK);
+  await client.connect();
 
-    db = client.db("react-todolist-db");
-    cb();
+  db = client.db("react-todolist-db");
+  cb();
 }
 
 export { db, connectToDB };

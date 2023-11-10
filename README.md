@@ -23,6 +23,7 @@ You can access the live demo of this app here : [Todo App Demo](https://tanjot-t
 
 1. Clone the repository.
 2. Open the terminal and navigate to the Backend directory.
-3. Run `npm run dev` to start the Node JS server.
-4. Open another terminal and navigate to the Frontend directory.
-5. Run `npm start` to start the React app.
+3. Run `npm install` to install all the dependencies.
+4. Run `npm run dev` to start the Node JS server.
+5. Open another terminal and navigate to the Frontend directory.
+6. Run `npm start` to start the React app.
