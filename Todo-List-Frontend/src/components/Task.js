@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Task({
   TaskName,
@@ -8,6 +9,7 @@ export default function Task({
   setAddTaskFlag,
   setStatusValue,
   setTitleValue,
+  setOldValue,
 }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,31 +22,42 @@ export default function Task({
   });
 
   function handleDelete(Task) {
-    setTasks((CurrentTasks) => {
-      return CurrentTasks.filter((TaskObj) => TaskObj.task !== Task.TaskName);
-    });
+    const deleteTask = async () => {
+      const response = await axios.delete(
+        `/api/todolist/delete/${Task.TaskName}`
+      );
+      console.log(response);
+
+      const responseGet = await axios.get("/api/todolist/All");
+
+      setTasks(responseGet.data);
+    };
+    deleteTask();
   }
 
   function handleEdit(Task, ItemStatus) {
     console.log(ItemStatus, Task);
     setStatusValue(ItemStatus.Status);
     setTitleValue(Task.TaskName);
+    setOldValue(Task.TaskName);
     setAddTaskFlag((prev) => !prev);
   }
 
   function handleCheck(Task) {
-    setTasks((CurrentTasks) => {
-      const UpdatedTasks = CurrentTasks.map((TaskObj) => {
-        if (TaskObj.task === Task.TaskName) {
-          return {
-            ...TaskObj,
-            status: TaskObj.status === "Complete" ? "Incomplete" : "Complete",
-          };
-        }
-        return TaskObj;
-      });
-      return UpdatedTasks;
-    });
+    const editTask = async () => {
+      const response = await axios.put("/api/todolist/update", editRequestBody);
+      console.log(response);
+
+      const responseGet = await axios.get("/api/todolist/All");
+
+      setTasks(responseGet.data);
+    };
+    const editRequestBody = {
+      oldTask: TaskName,
+      newTask: TaskName,
+      newStatus: Status === "Complete" ? "Incomplete" : "Complete",
+    };
+    editTask();
   }
 
   return (

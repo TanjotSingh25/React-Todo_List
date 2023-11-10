@@ -8,6 +8,7 @@ export default function Tasks({
   setAddTaskFlag,
   setStatusValue,
   setTitleValue,
+  setOldValue,
 }) {
   const filteredTasks = Tasks.filter(
     (taskClass) => Status === "All" || taskClass.status === Status
@@ -23,6 +24,7 @@ export default function Tasks({
       setAddTaskFlag={setAddTaskFlag}
       setTitleValue={setTitleValue}
       setStatusValue={setStatusValue}
+      setOldValue={setOldValue}
     />
   ));
 
